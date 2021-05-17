@@ -1,35 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:k11/styles/text_styles.dart' as textStyles;
+
 class StatusCardWidget extends StatelessWidget {
-  final bool isSuccessful;
+  final bool isNegative;
 
   StatusCardWidget({
-    @required this.isSuccessful,
+    @required this.isNegative,
   });
 
   @override
   Widget build(BuildContext context) {
-    Color color = isSuccessful ? Colors.red : Colors.green;
+    Color iconColor = isNegative ? Colors.green : Colors.yellow[600];
+    LinearGradient gradient = isNegative ? LinearGradient(
+      colors: [
+        Colors.green,
+        Colors.blue,
+      ],
+    ) : LinearGradient(
+      colors: [
+        Colors.yellow[600],
+        Colors.blue,
+      ],
+    );
 
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Container(
         padding: EdgeInsets.symmetric(
-          vertical: 12, horizontal: 12,
+          vertical: 40, horizontal: 12,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          gradient: gradient,
         ),
         child: Column(
           children: [
 
             // icon
             Container(
-              width: 40,
-              height: 40,
+              width: 60,
+              height: 60,
               decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
               ),
               child: Center(
-                child: Icon(Icons.done, color: color,),
+                child: Icon(
+                  Icons.done, 
+                  color: iconColor,
+                  size: 28,
+                ),
               ),
             ),
 
@@ -38,21 +62,19 @@ class StatusCardWidget extends StatelessWidget {
             // title
             Text(
               'OK',
-              style: GoogleFonts.karla(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              style: textStyles.btitle2.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w800
               ),
             ),
 
-            SizedBox(height: 16),
+            SizedBox(height: 4),
 
             // text
             Text(
               'Social Distance and Keep Safe',
-              style: GoogleFonts.lato(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
+              style: textStyles.text3.copyWith(
+                color: Colors.white,
               ),
             ),
 
