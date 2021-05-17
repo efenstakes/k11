@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
+
+
 import 'package:k11/models/location.dart';
 import 'package:k11/models/test.dart';
 import 'package:k11/pages/home/home_drawer.dart';
 import 'package:k11/pages/my_profile/my_profile.page.dart';
 import 'package:k11/pages/verify/verify.page.dart';
-import 'package:line_icons/line_icons.dart';
-
+import 'package:k11/widgets/test_li.dart';
 
 import 'package:k11/widgets/status_card.dart';
 
@@ -67,26 +68,7 @@ class _HomePageState extends State<HomePage> {
 
             // latest tests
             ...testData.tests.map((Test test) {
-              return Card(
-                elevation: 1,
-                child: ListTile(
-                  leading: Icon(
-                    test.isNegative ? Icons.done : Icons.warning_amber_rounded,
-                    color: test.isNegative ? Colors.green : Colors.yellow[900],
-                  ),
-                  title: Text(
-                    Jiffy(test.doneOn).jms,
-                  ),
-                  trailing: Text(
-                    test.isNegative ? 'OK' : '',
-                    style: TextStyle(
-                      color: test.isNegative ? Colors.green : Colors.yellow[900],
-                    ),
-                  ),
-                  // dense: true,
-                  isThreeLine: false,
-                ),
-              );
+              return TestLiWidget(test: test);
             }).toList(),
 
 
