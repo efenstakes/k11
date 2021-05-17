@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
+
 import 'package:k11/pages/my_location_history/my_location_history.page.dart';
+import 'package:k11/pages/my_test_history/my_test_history.page.dart';
 
 
 import 'package:k11/styles/text_styles.dart';
@@ -9,7 +12,6 @@ import 'package:line_icons/line_icons.dart';
 class HomeDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
 
     return Drawer(
       child: Container(
@@ -155,7 +157,12 @@ class HomeDrawerWidget extends StatelessWidget {
   }// _goToMyLocationHistory
   
   void _goToMyTestHistory({ @required BuildContext context }) {
-
+    Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (BuildContext ctx)=> MyTestHistoryPage()
+      ),
+    );
   }// _goToMyTestHistory
 
 }
