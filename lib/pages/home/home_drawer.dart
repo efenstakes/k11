@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:k11/pages/my_location_history/my_location_history.page.dart';
 
 
 import 'package:k11/styles/text_styles.dart';
@@ -69,7 +70,7 @@ class HomeDrawerWidget extends StatelessWidget {
               title: Text(
                 'Test History'
               ),
-              onTap: () {},
+              onTap: ()=> _goToMyTestHistory(context: context),
               isThreeLine: false,
             ),
 
@@ -81,7 +82,7 @@ class HomeDrawerWidget extends StatelessWidget {
               title: Text(
                 'Location History'
               ),
-              onTap: () {},
+              onTap: ()=> _goToMyLocationHistory(context: context),
               isThreeLine: false,
             ),
 
@@ -140,5 +141,21 @@ class HomeDrawerWidget extends StatelessWidget {
         ),
       ),
     );
-  }
+  }// build
+
+
+
+  void _goToMyLocationHistory({ @required BuildContext context }) {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(
+        builder: (BuildContext ctx)=> MyLocationHistoryPage()
+      ),
+    );
+  }// _goToMyLocationHistory
+  
+  void _goToMyTestHistory({ @required BuildContext context }) {
+
+  }// _goToMyTestHistory
+
 }
